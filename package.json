@@ -1,0 +1,15 @@
+{
+  "name": "tyshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "serve.js",
+  "type": "module",
+  "scripts": {
+    "start": "node serve.js"
+  },
+  "author": "Rocky",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
