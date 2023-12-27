@@ -1,55 +1,33 @@
-//#region RUN AND RETURN PHP FILES
-import child_process from "child_process";
-export const runAndReturnRes = (path) => {
-  const spawn = child_process.spawnSync;
-  var process = spawn("php", [`${path}`]);
-  return process.stdout.toString();
-};
-//#endregion
-
-//#region GET DIRNAME
-// const { fileURLToPath } = require("url");
-// const { dirname } = require("path");
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-//#endregion
+import envs from "./scripts/loadEnvs.js";
 
 //#region ROUTING
 import express from "express";
 const app = express();
-//#region ADD STATIC FILE PATHS
-import path from "path";
-app.use(express.static(path.join(process.cwd(), "/pages/")));
-app.use(express.static(path.join(process.cwd(), "/php/")));
-app.use(express.static(path.join(process.cwd(), "/scripts/")));
-app.use(express.static(path.join(process.cwd(), "/serve.js")));
+
+const root = process.cwd();
+const serverURL = process.env.LOCAL_SERVER_URL;
+
+app.use(express.static(root + "/scripts"));
+app.use(express.static(root + "/pages"));
+app.use(express.static(root + "/php"));
+
+//#region ROUTING TO DIFFERENT LOCATIONS
+app.get("/", (req, res) => {
+  res.sendFile("home.html", { root: "pages" });
+});
+
+import runPHP from "./scripts/runAndReturnRes.js";
+app.get("/test", (req, res) => {
+  const go = runPHP("./php/test.php");
+  res.status(200).send(go.toString());
+});
 //#endregion
 
 //#region CREATE SERVER ON PORT 3000
-app.listen(3000, () => {
+app.listen(process.env.LOCAL_SERVER_PORT, () => {
   console.log("Server Running on http://localhost:3000");
 });
 //#endregion
-
-//#region ROUTING TO DIFFERENT LOCATIONS
-import fs from "fs";
-app.get("/balls", (req, res) => {
-  let readData = "";
-  fs.readFile("./pages/index.html", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    readData += data;
-    readData += runAndReturnRes("./php/index.php");
-    res.send(readData);
-  });
-});
-
-app.get("/test", (req, res) => {
-  const go = runAndReturnRes("./php/test.php");
-  res.send(go);
-});
 //#endregion
 
-//#endregion
+//////${$(grep '^PHP_SERVER_URL' .env)#*=} to get localhost:2000 but bad substitution when running it in package.json, why?
