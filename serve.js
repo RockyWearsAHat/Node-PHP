@@ -1,5 +1,3 @@
-import envs from "./scripts/loadEnvs.js";
-
 //#region ROUTING
 import express from "express";
 const app = express();
@@ -10,21 +8,37 @@ const serverURL = process.env.LOCAL_SERVER_URL;
 app.use(express.static(root + "/scripts"));
 app.use(express.static(root + "/pages"));
 app.use(express.static(root + "/php"));
+app.use(express.static(root + "/components"));
+app.use(express.static(root + "/css"));
+app.use(express.static(root + "/public"));
 
 //#region ROUTING TO DIFFERENT LOCATIONS
-app.get("/", (req, res) => {
-  res.sendFile("home.html", { root: "pages" });
+app.get(
+  "/",
+  (req, res, next) => {
+    console.log("routing to homepage");
+    next();
+  },
+  (req, res) => {
+    res.sendFile("home.html", { root: "pages" });
+  },
+);
+
+app.get("/test/:user", (req, res) => {
+  res.sendFile("/test.html", { root: "pages" });
 });
 
-import runPHP from "./scripts/runAndReturnRes.js";
-app.get("/test", (req, res) => {
-  const go = runPHP("./php/test.php");
-  res.status(200).send(go.toString());
+app.get("/products/:productName", (req, res) => {
+  res.sendFile("/product.html", { root: "pages" });
+});
+
+app.get("/products", (req, res) => {
+  res.sendFile("/catalogue.html", { root: "pages" });
 });
 //#endregion
 
 //#region CREATE SERVER ON PORT 3000
-app.listen(process.env.LOCAL_SERVER_PORT, () => {
+app.listen(3000, () => {
   console.log("Server Running on http://localhost:3000");
 });
 //#endregion

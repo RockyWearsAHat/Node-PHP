@@ -1,5 +1,5 @@
-fetch(`http://localhost:2000/index.php`)
-  .then((res) => res.text())
-  .then((json) => {
-    document.querySelector("h1").innerHTML = json;
-  });
+const res = await fetch(`http://localhost:2000/index.php`);
+const json = await res.text();
+
+document.querySelector("h1").innerHTML = json;
+console.log("hello");

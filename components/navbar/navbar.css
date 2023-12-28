@@ -1,0 +1,109 @@
+ul,
+ul > li {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar {
+  font-family: "Ubuntu", sans-serif;
+  width: 100vw;
+  height: 5vh;
+  background-color: var(--darkGray);
+  position: relative;
+}
+
+#navbar > img {
+  width: auto;
+  height: 5vh;
+  left: 20px;
+  top: -1px;
+  position: absolute;
+  width: fit-content;
+}
+
+#navbar > ul {
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: 4em;
+  list-style-type: none;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  margin-inline: auto;
+  width: fit-content;
+}
+
+#navbar > ul > li > a,
+#navbar > ul > li > div {
+  all: unset;
+  color: var(--white);
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#productsDropdownBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  position: relative;
+}
+
+#productsDropdownBtn:hover {
+  cursor: pointer;
+}
+
+#navbar > ul > li > a:hover,
+#navbar > ul > li > div:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  #navbar > ul {
+    gap: 1em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #navbar > ul {
+    gap: 0.2em;
+  }
+}
+
+#productsDropdown {
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  margin-top: -2px;
+  width: 100vw;
+  background-color: var(--darkGray);
+  transition: 0.2s ease-in-out all;
+}
+
+#productsDropdown > ul {
+  text-align: center;
+}
+
+#productsDropdown > ul > li {
+  list-style-type: none;
+  text-align: center;
+}
+
+#productsDropdown > ul > li > a {
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+#productsDropdown.hidden {
+  height: 0px;
+}
+
+#productsDropdown.active {
+  height: 10vh;
+}

@@ -1,8 +1,13 @@
 {
-  "trailingComma": "es5",
+  "editor.formatOnSave": true,
   "tabWidth": 2,
-  "semi": false,
-  "singleQuote": true,
-  "parser": "php",
-  "plugins": ["@prettier/plugin-php"]
+  "plugins": ["@prettier/plugin-php"],
+  "overrides": [
+    {
+      "files": "*.php",
+      "options": {
+        "parser": "php"
+      }
+    }
+  ]
 }
