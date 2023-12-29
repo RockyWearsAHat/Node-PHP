@@ -8,7 +8,7 @@ for (let i = 0; i < allElements.length; i++) {
 
     let body = await res.text();
 
-    body.split("\r\n").forEach((val) => {
+    body.split("\n").forEach((val) => {
       if (val.indexOf("script") > -1) {
         let firstSplit = val.split("src=");
         let secondSplit = firstSplit[1].split("></script>");

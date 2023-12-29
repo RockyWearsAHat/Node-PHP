@@ -1,16 +1,41 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script type="text/javascript" src="https://livejs.com/live.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="/globals.css" />
-    <link rel="icon" type="" href="/favicon-32x32.png" />
+    <link
+      rel="shortcut icon"
+      href="/android-chrome-192x192.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="mask-icon" href="/android-chrome-192x192.png" color="white" />
+    <link rel="stylesheet" href="/home.css" />
   </head>
   <body>
     <div import="/navbar/navbar.html"></div>
-    <h1>Test</h1>
+    <div class="landingBackground">
+      <div class="pageContent">
+        <div class="leftHeading">
+          <h1>Beanies Now Released!</h1>
+          <a href="/products/smiley_beanie"><h2 id="orderBtn">Shop</h2></a>
+        </div>
+        <div class="rightImg">
+          <img src="/beanie.png" alt="beanie" />
+        </div>
+      </div>
+
+      <svg import="/background/topographic.svg"></svg>
+    </div>
+
+    <script type="module" src="/home.js"></script>
     <script type="module" src="/importHTML.js"></script>
   </body>
 </html>

@@ -4,9 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
+    <link
+      rel="shortcut icon"
+      href="/android-chrome-192x192.png"
+      type="image/x-icon"
+    />
+    <link rel="mask-icon" href="/android-chrome-192x192.ico" color="white" />
+    <link rel="stylesheet" href="/product.css" />
   </head>
   <body>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <div import="/navbar/navbar.html"></div>
+    <div class="productPageBackground">
+      <div class="productImageScrollerWrap">
+        <ul class="productImageScroller" id="productImageScroller">
+          <button id="backBtn">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </button>
+          <button id="nextBtn">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </button>
+          <li data-active="true"><img src="/beanie.png" alt="beanie" /></li>
+          <li><img src="/android-chrome-192x192.png" alt="beanie" /></li>
+          <li><img src="/beanie.png" alt="beanie" /></li>
+        </ul>
+      </div>
+    </div>
     <script type="module" src="/product.js"></script>
     <script type="module" src="/importHTML.js"></script>
   </body>

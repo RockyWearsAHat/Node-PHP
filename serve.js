@@ -3,38 +3,37 @@ import express from "express";
 const app = express();
 
 const root = process.cwd();
-const serverURL = process.env.LOCAL_SERVER_URL;
 
-app.use(express.static(root + "/scripts"));
-app.use(express.static(root + "/pages"));
-app.use(express.static(root + "/php"));
-app.use(express.static(root + "/components"));
-app.use(express.static(root + "/css"));
-app.use(express.static(root + "/public"));
+app.use("/", express.static(root + "/scripts"));
+app.use("/", express.static(root + "/pages"));
+app.use("/", express.static(root + "/php"));
+app.use("/", express.static(root + "/components"));
+app.use("/", express.static(root + "/css"));
+app.use("/", express.static(root + "/public"));
 
 //#region ROUTING TO DIFFERENT LOCATIONS
-app.get(
-  "/",
-  (req, res, next) => {
-    console.log("routing to homepage");
-    next();
-  },
-  (req, res) => {
-    res.sendFile("home.html", { root: "pages" });
-  },
-);
+app.get("/", (req, res) => {
+  res.sendFile("home.html", { root: "pages" });
+});
 
-app.get("/test/:user", (req, res) => {
-  res.sendFile("/test.html", { root: "pages" });
+app.get("/contact", (req, res) => {
+  res.sendFile("/contact.html", { root: "pages" });
 });
 
 app.get("/products/:productName", (req, res) => {
   res.sendFile("/product.html", { root: "pages" });
 });
 
-app.get("/products", (req, res) => {
-  res.sendFile("/catalogue.html", { root: "pages" });
-});
+app.get(
+  "/products",
+  (req, res, next) => {
+    console.log("navigating to products page");
+    next();
+  },
+  (req, res) => {
+    res.sendFile("/catalogue.html", { root: "pages" });
+  },
+);
 //#endregion
 
 //#region CREATE SERVER ON PORT 3000

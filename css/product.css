@@ -1,0 +1,92 @@
+.productPageBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--lightishGray);
+}
+
+.productImageScrollerWrap {
+  width: 800px;
+  height: 800px;
+  overflow: hidden;
+}
+
+.productImageScroller {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.productImageScroller > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 0.3s all ease-in-out;
+}
+
+.productImageScroller > li[data-active] {
+  opacity: 1;
+}
+
+.productImageScroller > button {
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  box-shadow: transparent;
+  border: none;
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s all ease-in-out;
+}
+
+.productImageScroller > button:hover {
+  cursor: pointer;
+}
+
+.productImageScroller > button::before {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  width: 40px;
+  height: 40px;
+  background-color: var(--blue);
+  transform: scale(0);
+  transition: 0.2s all ease-in-out;
+}
+
+.productImageScroller > button:hover::before {
+  transform: scale(1);
+}
+
+.productImageScroller > button:active::before {
+  background-color: var(--darkGray);
+  transform: scale(0.95);
+}
+
+#backBtn::before {
+  left: 5px;
+}
+
+#nextBtn::before {
+  right: 5px;
+}
+
+#backBtn {
+  left: 30px;
+  z-index: 21;
+}
+
+#nextBtn {
+  right: 30px;
+}

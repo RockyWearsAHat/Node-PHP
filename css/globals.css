@@ -12,8 +12,9 @@
 * {
   --red: #ff1c28;
   --blue: #457f8a;
-  --gray: #6f6f6f;
-  --darkGray: #241a1f;
+  --gray: #3b3f4a;
+  --lightishGray: #38373f;
+  --darkGray: #1b1a24;
   --white: #eeeeee;
   margin: 0;
 }

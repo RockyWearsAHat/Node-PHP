@@ -4,24 +4,38 @@ ul > li {
   padding: 0;
 }
 
+* {
+  --navbarHeight: 70px;
+}
+
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
 #navbar {
+  z-index: 10;
   font-family: "Ubuntu", sans-serif;
   width: 100vw;
-  height: 5vh;
+  height: var(--navbarHeight);
   background-color: var(--darkGray);
   position: relative;
 }
 
 #navbar > img {
-  width: auto;
-  height: 5vh;
+  height: var(--navbarHeight);
   left: 20px;
   top: -1px;
   position: absolute;
-  width: fit-content;
+  object-fit: cover;
 }
 
 #navbar > ul {
+  z-index: 11;
   max-width: 600px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -37,11 +51,14 @@ ul > li {
 
 #navbar > ul > li > a,
 #navbar > ul > li > div {
-  all: unset;
   color: var(--white);
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+#navbar > ul > li:hover {
+  cursor: pointer;
 }
 
 #productsDropdownBtn {
@@ -74,6 +91,7 @@ ul > li {
 }
 
 #productsDropdown {
+  z-index: 9;
   overflow-y: hidden;
   display: flex;
   justify-content: center;

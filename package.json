@@ -2,7 +2,7 @@
   "name": "tyshop",
   "version": "1.0.0",
   "description": "",
-  "main": "serve.js",
+  "private": true,
   "type": "module",
   "scripts": {
     "start": "nodemon serve.js",
