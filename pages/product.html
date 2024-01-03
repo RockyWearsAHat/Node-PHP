@@ -10,6 +10,10 @@
       type="image/x-icon"
     />
     <link rel="mask-icon" href="/android-chrome-192x192.ico" color="white" />
+    <link rel="stylesheet" href="/globals.css" />
+    <link rel="stylesheet" href="/navbar/navbar.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="/product.css" />
   </head>
   <body>
@@ -31,13 +35,36 @@
           <button id="nextBtn">
             <ion-icon name="chevron-forward-outline"></ion-icon>
           </button>
-          <li data-active="true"><img src="/beanie.png" alt="beanie" /></li>
-          <li><img src="/android-chrome-192x192.png" alt="beanie" /></li>
-          <li><img src="/beanie.png" alt="beanie" /></li>
+          <!-- IMAGES ADDED DYNAMICALLY -->
         </ul>
+      </div>
+      <div class="productDescriptionContainer">
+        <!-- CONTENT FILLED DYNAMICALLY -->
+        <div class="aboutProductWrap">
+          <h1 id="productName"></h1>
+          <h1 id="productPrice"></h1>
+          <div id="productDescription"></div>
+        </div>
+        <div class="reviewsWrap">
+          <p><span id="reviewAverage"></span></p>
+          <div id="starWrap">
+            <ion-icon name="star-outline"></ion-icon
+            ><ion-icon name="star-outline"></ion-icon
+            ><ion-icon name="star-outline"></ion-icon
+            ><ion-icon name="star-outline"></ion-icon
+            ><ion-icon name="star-outline"></ion-icon>
+          </div>
+          <a href="/reviews/smiley_beanie"
+            ><span id="numberOfReviews"></span> Reviews</a
+          >
+        </div>
+        <div class="addToCartWrap">
+          <button>Add To Cart</button>
+        </div>
       </div>
     </div>
     <script type="module" src="/product.js"></script>
+    <script type="module" src="/createProduct.js"></script>
     <script type="module" src="/importHTML.js"></script>
   </body>
 </html>

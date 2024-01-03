@@ -4,20 +4,16 @@ if (url != "http://localhost:3000/") {
   nav.classList.add("offHomePage");
 }
 
-console.log("hello");
-
 const dropdownBtn = document.getElementById("productsDropdownBtn");
 const dropdownMenu = document.getElementById("productsDropdown");
 
 const openMenu = (e) => {
-  console.log("opening menu!");
+  // console.log("opening menu!");
   dropdownMenu.classList.add("active");
   dropdownMenu.classList.remove("hidden");
 };
 
-dropdownBtn.addEventListener("onmouseover", () => {
-  console.log("hello there");
-});
+dropdownBtn.addEventListener("mousemove", openMenu);
 dropdownBtn.childNodes[1].addEventListener("mousemove", openMenu);
 
 document.addEventListener("mousemove", (e) => {

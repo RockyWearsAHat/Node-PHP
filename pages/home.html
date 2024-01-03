@@ -21,10 +21,10 @@
   </head>
   <body>
     <div import="/navbar/navbar.html"></div>
-    <div class="landingBackground">
+    <div class="landingBackground" id="landingBackground">
       <div class="pageContent">
         <div class="leftHeading">
-          <h1>Beanies Now Released!</h1>
+          <h1>Beanies <em>Now</em> Available!</h1>
           <a href="/products/smiley_beanie"><h2 id="orderBtn">Shop</h2></a>
         </div>
         <div class="rightImg">
@@ -32,7 +32,11 @@
         </div>
       </div>
 
-      <svg import="/background/topographic.svg"></svg>
+      <svg
+        id="svgBackground"
+        import="/background/topographic.svg"
+        seed=""
+      ></svg>
     </div>
 
     <script type="module" src="/home.js"></script>

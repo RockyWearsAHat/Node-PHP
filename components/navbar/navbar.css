@@ -32,6 +32,7 @@ ul > li {
   top: -1px;
   position: absolute;
   object-fit: cover;
+  transform: rotate(4deg);
 }
 
 #navbar > ul {
@@ -49,6 +50,12 @@ ul > li {
   width: fit-content;
 }
 
+#navbar > ul > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #navbar > ul > li > a,
 #navbar > ul > li > div {
   color: var(--white);
@@ -57,20 +64,12 @@ ul > li {
   text-transform: uppercase;
 }
 
-#navbar > ul > li:hover {
-  cursor: pointer;
-}
-
 #productsDropdownBtn {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100%;
   position: relative;
-}
-
-#productsDropdownBtn:hover {
-  cursor: pointer;
 }
 
 #navbar > ul > li > a:hover,
@@ -93,16 +92,20 @@ ul > li {
 #productsDropdown {
   z-index: 9;
   overflow-y: hidden;
-  display: flex;
+  display: grid;
   justify-content: center;
-  margin-top: -2px;
+  margin-top: -12px;
   width: 100vw;
   background-color: var(--darkGray);
-  transition: 0.2s ease-in-out all;
+  transition: 0.2s ease-in-out grid-template-rows;
+  overflow: hidden;
+  grid-template-rows: 0fr;
+  padding-bottom: 10px;
 }
 
 #productsDropdown > ul {
   text-align: center;
+  overflow: hidden;
 }
 
 #productsDropdown > ul > li {
@@ -119,9 +122,9 @@ ul > li {
 }
 
 #productsDropdown.hidden {
-  height: 0px;
+  grid-template-rows: 0fr;
 }
 
 #productsDropdown.active {
-  height: 10vh;
+  grid-template-rows: 1fr;
 }

@@ -1,16 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="100vw" height="100vh">
-<rect width="100%" height="100%" fill="none" filter="url(#filter)"/>
-<defs>
-    <filter id="filter" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="turbulence" baseFrequency=".002" numOctaves="8"/>
-
-        <feComponentTransfer>
-            <feFuncA type="discrete" tableValues="1 1 0 0 1 1 0 0"/>
-        </feComponentTransfer>
-
-        <feConvolveMatrix kernelMatrix="1 0 1 0 -4 0 1 0 1"/>
-
-        <feColorMatrix values="1 1 1 0 0 1 1 1 0 0 1 1 1 0 0 0 0 0 1 0"/>
-    </filter>
+    <rect width="100%" height="100%" fill="none" filter="url(#filter)"/>
+    <defs>
+        <filter id="filter" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="turbulence" baseFrequency=".002" numOctaves="8" seed="{seed}"/>
+            <feComponentTransfer>
+                <feFuncA type="discrete" tableValues="1 1 0 0 1 1 0 0"/>
+            </feComponentTransfer>
+            <feConvolveMatrix kernelMatrix="1 0 1 0 -4 0 1 0 1"/>
+            <feColorMatrix values="1 1 1 0 0 1 1 1 0 0 1 1 1 0 0 0 0 0 1 0"/>
+        </filter>
     </defs>
 </svg>

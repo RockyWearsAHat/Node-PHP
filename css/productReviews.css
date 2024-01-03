@@ -1,0 +1,96 @@
+* {
+  font-family: "Ubuntu", sans-serif;
+  color: white;
+}
+
+#reviewCardContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 30px;
+  padding-top: calc(70px + 30px);
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--lightishGray);
+}
+
+.ratingWrap {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  background-color: var(--blue);
+}
+
+.ratingWrap:nth-of-type(1) {
+  margin-top: 0px;
+}
+
+.starContainer {
+  padding-top: 2px;
+}
+
+.starAndRatingWrap {
+  margin-top: -20px;
+  gap: 5px;
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameVerifiedWrap {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.reviewName {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  position: relative;
+  margin-right: -15px;
+  white-space: nowrap;
+}
+
+.verifiedPurchaseCheck[data-verified-purchase="true"] {
+  display: flex;
+  justify-content: left;
+  padding-left: 20px;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  pointer-events: none;
+}
+
+.verifiedPurchaseCheck[data-verified-purchase="true"] > ion-icon {
+  pointer-events: auto;
+}
+
+.verifiedPurchaseCheck[data-verified-purchase="true"]::after {
+  content: "Verified Purchase";
+  position: absolute;
+  background-color: var(--darkGray);
+  padding-inline: 10px;
+  top: 100%;
+  z-index: 20;
+  border-radius: 5px;
+  height: 0%;
+  transition: 0.2s all ease-in-out;
+  overflow-y: hidden;
+}
+
+.verifiedPurchaseCheck[data-verified-purchase="true"]:hover::after {
+  height: 100%;
+}

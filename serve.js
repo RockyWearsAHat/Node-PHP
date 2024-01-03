@@ -20,8 +20,16 @@ app.get("/contact", (req, res) => {
   res.sendFile("/contact.html", { root: "pages" });
 });
 
+app.get("/products/product-not-found", (req, res) => {
+  res.sendFile("/product404.html", { root: "pages" });
+});
+
 app.get("/products/:productName", (req, res) => {
   res.sendFile("/product.html", { root: "pages" });
+});
+
+app.get("/reviews/:productName", (req, res) => {
+  res.sendFile("/productReviews.html", { root: "pages" });
 });
 
 app.get(

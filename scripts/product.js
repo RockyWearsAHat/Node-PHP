@@ -13,6 +13,65 @@ url.forEach((val) => {
 
 document.title = title;
 
+const res = await fetch(
+  `http://localhost:2000/fetchProduct.php?product=${title
+    .trim()
+    .replaceAll(" ", "%20")}`,
+);
+
+const dbObj = await res.json();
+
+if (dbObj) {
+  if (dbObj.error) {
+    window.location.href = "/products/product-not-found";
+  } else {
+    const productNameHeader = document.getElementById("productName");
+    productNameHeader.innerHTML = dbObj.name;
+
+    const productPriceHeader = document.getElementById("productPrice");
+    productPriceHeader.innerHTML = `$${dbObj.price.toFixed(2)}`;
+
+    const productDescription = document.getElementById("productDescription");
+    productDescription.innerHTML = dbObj.description;
+
+    const scrollerWrap = document.getElementById("productImageScroller");
+
+    let i = 0;
+    dbObj.images.forEach((val) => {
+      if (i == 0)
+        scrollerWrap.innerHTML += `<li data-active="true"><img src="${val}" alt="img${i}" /></li>`;
+      else
+        scrollerWrap.innerHTML += `<li><img src="${val}" alt="img${i}" /></li>`;
+      i++;
+    });
+  }
+}
+
+const res2 = await fetch(
+  `http://localhost:2000/getReviews.php?productId=${dbObj.id}`,
+);
+
+const res2Json = JSON.parse(await res2.json());
+// console.log(res2Json);
+
+const reviewAverageWrap = document.getElementById("reviewAverage");
+reviewAverageWrap.innerHTML = res2Json.reviewAvg.toFixed(1);
+
+for (let i = 0; i < res2Json.reviewAvg; i++) {
+  const starWrapper = document.getElementById("starWrap");
+
+  // console.log(res2Json.reviewAvg - i);
+  if (res2Json.reviewAvg - i >= 0.75) {
+    starWrapper.children[i].setAttribute("name", "star");
+  } else if (res2Json.reviewAvg - i >= 0.25) {
+    starWrapper.children[i].setAttribute("name", "star-half");
+  }
+}
+
+const numberOfReviewsWrap = document.getElementById("numberOfReviews");
+numberOfReviewsWrap.innerHTML = res2Json.reviews.length;
+
+//some fuckin spaghetti code for the product image scroller with no way to modify related timings at the same time
 const nextBtn = document.getElementById("nextBtn");
 const prevBtn = document.getElementById("backBtn");
 
